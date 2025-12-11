@@ -7,7 +7,7 @@ trigger:
 stages:
 - stage: Build
   jobs:
-    -job: BuildJob
+  - job: BuildJob
     pool:
       vmImage: 'ubuntu-latest'
 
@@ -36,4 +36,42 @@ stages:
           reportDirectory: '.'
         displayName: 'Publish Coverage'
 
-      - task:
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathToPublish: '$(Build.ArtifactStagingDirectory)'
+          artifactName: 'drop'
+
+-stage: DeployDev
+displayName: "Delpy To Dev"
+dependsOn: Build
+condition: succeeded()
+jobs:
+  - deployment: DeployDev
+    environment: 'Dev'
+    pool:
+      vmImage: 'ubuntu-latest'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          - script: echo "Deploying to Dev environment"
+            displayName: 'Deploy to Dev'
+stage: DeployProdution
+displayName: "Delpy To Prodution"
+dependsOn: DeployDev
+condition: succeeded()
+jobs:
+  - deployment: DeployProduction
+    environment: 'Production'
+    pool:
+      vmImage: 'ubuntu-latest'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          - script: echo "Deploying to Production environment"
+            displayName: 'Deploy to Production'
