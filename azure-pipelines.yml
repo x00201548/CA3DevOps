@@ -41,11 +41,11 @@ stages:
           pathToPublish: '$(Build.ArtifactStagingDirectory)'
           artifactName: 'drop'
 
--stage: DeployDev
-displayName: "Delpy To Dev"
-dependsOn: Build
-condition: succeeded()
-jobs:
+- stage: DeployDev
+  displayName: "Deploy To Dev"
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
   - deployment: DeployDev
     environment: 'Dev'
     pool:
@@ -58,11 +58,12 @@ jobs:
             artifact: drop
           - script: echo "Deploying to Dev environment"
             displayName: 'Deploy to Dev'
-stage: DeployProdution
-displayName: "Delpy To Prodution"
-dependsOn: DeployDev
-condition: succeeded()
-jobs:
+
+- stage: DeployProduction
+  displayName: "Deploy To Production"
+  dependsOn: DeployDev
+  condition: succeeded()
+  jobs:
   - deployment: DeployProduction
     environment: 'Production'
     pool:
