@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+      - main
+      - development
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+    displayName: 'Install Dependencies'
+
+  - script: pylint app/*.py
+    displayName: 'Static Analysis with Pylint'
+
+  - script: |
+      pytest -q --cov=app --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
+    displayName: 'Run Tests with Coverage (fail <80%)'
+
+
+  - task: PublishCodeCoverageResults@2
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: 'coverage.xml'
+      reportDirectory: '.'
+    displayName: 'Publish Coverage'
