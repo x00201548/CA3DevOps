@@ -11,7 +11,20 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
 
+
+
     steps:
+
+      - task: SonarCloudPrepare@1
+        inputs:
+          SonarCloud: 'SonarCloudServiceConnection'
+          organization: 'x00201548'
+          scannerMode: 'Other'
+          projectKey: 'x00201548_CA3DevOps'
+          projectName: 'CA3DevOps'
+        displayName: 'SonarCloud'
+
+
       - task: UsePythonVersion@0
         inputs:
           versionSpec: '3.x'
@@ -28,6 +41,13 @@ stages:
           pytest -q --cov=app --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
         displayName: 'Run Tests with Coverage (fail <80%)'
 
+      - task: SonarCloudAnalyze@1
+        displayName: 'Analyze'
+
+      - task: SonarCloudPublish@1
+        inputs:
+          pollingTimeoutSec: '600'
+        displayName: 'Publish'
 
       - task: PublishCodeCoverageResults@2
         inputs:
