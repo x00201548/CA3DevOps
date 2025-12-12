@@ -54,8 +54,12 @@ stages:
 
       - task: CopyFiles@2
         inputs:
-          contents: '**'
+          contents: |
+            app/**
+            requirements.txt
+            *.py
           targetFolder: '$(Build.ArtifactStagingDirectory)'
+        displayName: 'Copy Application Files'
 
 
       - task: PublishBuildArtifacts@1
