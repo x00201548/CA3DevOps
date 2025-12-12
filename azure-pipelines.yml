@@ -50,6 +50,17 @@ stages:
           pytest tests/test_calc_selenium.py -v 
         displayName: 'Selenium UAT Tests'
 
+      - script: |
+          pip install locust
+          echo "from locust import HttpUser, task
+          class WebsiteUser(HttpUser):
+              @task
+              def test_homepage(self):
+                  self.client.get('/')
+          " > locustfile.py
+          locust --headless -u 5 -r 1 -t 10s --host=https://www.calculator.net 
+        displayName: 'Performance Testing with Locust'
+
       - task: SonarCloudAnalyze@4
         displayName: 'Analyze'
       - task: PublishCodeCoverageResults@2
@@ -59,6 +70,7 @@ stages:
           reportDirectory: '.'
         displayName: 'Publish Coverage'
 
+
       - task: CopyFiles@2
         inputs:
           contents: |
@@ -67,6 +79,7 @@ stages:
             *.py
           targetFolder: '$(Build.ArtifactStagingDirectory)'
         displayName: 'Copy Application Files'
+
 
 
       - task: PublishBuildArtifacts@1
