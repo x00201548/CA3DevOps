@@ -45,12 +45,6 @@ stages:
 
       - task: SonarCloudAnalyze@4
         displayName: 'Analyze'
-
-      - task: SonarCloudPublish@4
-        inputs:
-          pollingTimeoutSec: '600'
-        displayName: 'Publish'
-
       - task: PublishCodeCoverageResults@2
         inputs:
           codeCoverageTool: Cobertura
