@@ -43,8 +43,12 @@ stages:
         displayName: 'Static Analysis with Pylint'
 
       - script: |
-          pytest -q --cov=app/calc.py --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
-        displayName: 'Run Tests with Coverage (fail <80%)'
+          pytest tests/test_calc.py -q --cov=app --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
+        displayName: 'Run Unit Tests with Coverage (fail <80%)'
+
+      - script: |
+          pytest tests/test_uat_selenium.py -v --html=selenium-report.html --self-contained-html || true
+        displayName: 'Selenium UAT Tests'
 
       - task: SonarCloudAnalyze@4
         displayName: 'Analyze'
