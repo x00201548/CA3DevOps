@@ -27,9 +27,8 @@ class CalcSeleniumTest(unittest.TestCase):
         driver.find_element(By.NAME, "num2").send_keys(str(num2))
 
         driver.find_element(By.TAG_NAME, "button").click()
-        time.sleep(0.5)  # wait for result
+        time.sleep(0.5)  
 
-        # return result text
         try:
             result = driver.find_element(By.XPATH, "//p[contains(text(),'Result')]").text
         except:
