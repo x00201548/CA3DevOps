@@ -43,7 +43,7 @@ stages:
         displayName: 'Static Analysis with Pylint'
 
       - script: |
-          pytest -q --cov=app --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
+          pytest -q --cov=app/calc.py --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
         displayName: 'Run Tests with Coverage (fail <80%)'
 
       - task: SonarCloudAnalyze@4
