@@ -43,7 +43,7 @@ stages:
         displayName: 'Static Analysis with Pylint'
 
       - script: |
-          pytest tests/test_calc.py -q --cov=app --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
+          pytest tests/test_calc.py -q --cov=app/calc.py --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
         displayName: 'Run Unit Tests with Coverage (fail <80%)'
 
       - script: |
