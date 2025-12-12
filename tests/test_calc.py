@@ -2,7 +2,7 @@ from app import calc
 
 
 def test_add():
-    assert calc.add(2, 3) == 5
+    assert calc.add(3, 3) == 6
     assert calc.add(6, 3) == 9
 
 
