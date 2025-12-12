@@ -47,7 +47,7 @@ stages:
         displayName: 'Run Unit Tests with Coverage'
 
       - script: |
-          pytest tests/test_uat_selenium.py -v 
+          pytest tests/test_calc_selenium.py -v 
         displayName: 'Selenium UAT Tests'
 
       - task: SonarCloudAnalyze@4
