@@ -15,7 +15,7 @@ stages:
 
     steps:
 
-      - task: SonarCloudPrepare@1
+      - task: SonarCloudPrepare@2
         inputs:
           SonarCloud: 'SonarCloudServiceConnection'
           organization: 'x00201548'
@@ -41,10 +41,10 @@ stages:
           pytest -q --cov=app --cov-report=xml --cov-fail-under=80 --junitxml=junit.xml
         displayName: 'Run Tests with Coverage (fail <80%)'
 
-      - task: SonarCloudAnalyze@1
+      - task: SonarCloudAnalyze@2
         displayName: 'Analyze'
 
-      - task: SonarCloudPublish@1
+      - task: SonarCloudPublish@2
         inputs:
           pollingTimeoutSec: '600'
         displayName: 'Publish'
