@@ -19,9 +19,11 @@ stages:
         inputs:
           SonarCloud: 'Devops'
           organization: 'x00201548'
-          scannerMode: 'Other'
-          projectKey: 'x00201548_CA3DevOps'
-          projectName: 'CA3DevOps'
+          scannerMode: 'CLI'
+          configMode: 'manual'
+          cliProjectKey: 'x00201548_CA3DevOps'
+          cliProjectName: 'CA3DevOps'
+          cliSources: 'app'
         displayName: 'SonarCloud'
 
 
