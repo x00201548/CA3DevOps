@@ -7,7 +7,7 @@ def test_add():
 
 
 def test_multiply():
-    assert calc.multiply(3, 4) == 12
+    assert calc.multiply(4, 4) == 16
     assert calc.multiply(6, 2) == 12
 
 def test_subtract():
