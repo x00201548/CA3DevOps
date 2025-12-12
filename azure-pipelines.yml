@@ -24,6 +24,9 @@ stages:
           cliProjectKey: 'x00201548_CA3DevOps'
           cliProjectName: 'CA3DevOps'
           cliSources: 'app'
+          extraProperties: |
+            sonar.python.coverage.reportPaths=coverage.xml
+            sonar.python.xunit.reportPath=junit.xml
         displayName: 'SonarCloud'
 
 
