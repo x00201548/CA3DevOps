@@ -9,7 +9,8 @@ class CalcSeleniumTest(unittest.TestCase):
 
     def setUp(self):
         options = webdriver.ChromeOptions()
-        options.add_argument("--headless")  # run without opening a browser
+        options.add_argument("--no-sandbox")
+        options.add_argument("--headless")  
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
         self.driver.get("https://www.calculator.net/")
         time.sleep(2)  # wait for page to load
