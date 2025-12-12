@@ -35,10 +35,5 @@ class CalcSeleniumTest(unittest.TestCase):
         result = self.click_buttons(["5", "-", "2"])
         self.assertIn("3", result)
 
-    def test_subtraction(self):
-        result = self.click_buttons(["3", "-", "2"])
-        self.assertIn("1", result)
-
-
 if __name__ == "__main__":
     unittest.main()
