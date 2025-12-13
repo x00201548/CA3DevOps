@@ -58,7 +58,7 @@ stages:
               def test_homepage(self):
                   self.client.get('/')
           " > locustfile.py
-          locust --headless -u 5 -r 1 -t 10s --host=https://www.calculator.net 
+          locust --headless -u 10 -r 1 -t 10s --host=https://www.calculator.net 
         displayName: 'Performance Testing with Locust'
 
       - task: SonarCloudAnalyze@4
