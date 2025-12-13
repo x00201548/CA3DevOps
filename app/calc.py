@@ -26,3 +26,4 @@ def cube(a):
     """Return the cube of a."""
     return a * a * a
 
+
