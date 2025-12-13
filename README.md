@@ -17,10 +17,10 @@ This project is to demonstrate the implementation of a complete CI/CD Pipeline, 
 ## Local Setup
 - I first cloned my CA2 Repo and created a new CA3 folder.
 - I then set up a new repo and pushed the CA3 folder into the development branch.
-- I then set up a new project in Azure Devops and connected the github repository.
+- I then set up a new project in Azure DevOps and connected the GitHub repository.
 
 ## Application Features
-For the application it is a basic calculator application. I tried to create a web viesrion of the calculator but failed to deploy it when triggering the pipleine so I kept the application the same as CA2 and added new features and used the calculator.net app as the application I will be testing for selenium and other web based testing as I was having issues with my own applictaion.
+For the application it is a basic calculator application. I tried to create a web version of the calculator but failed to deploy it when triggering the pipeline so I kept the application the same as CA2 and added new features and used the calculator.net app as the application I will be testing for selenium and other web based testing as I was having issues with my own application.
 
   - An app folder with the calc.py (Calculator application)
   - A tests folder with the test_calc.py file that had my tests.
@@ -115,7 +115,7 @@ git push -u origin development
 ## Pipeline Implementation
 
 I then created a new Azure DevOps project and in pipelines connected it to my GitHub repo. 
-I then chose an existant yaml file and used the azure-pipelines.yml file below that I pushed into my GitHub repository in the development branch. 
+I then chose an existent yaml file and used the azure-pipelines.yml file below that I pushed into my GitHub repository in the development branch. 
 
 Below is my previous CA2 .yaml file
 
@@ -331,29 +331,30 @@ The above stage deploys the test stage. The test stage only deploys if the build
           - script: echo "Deploying to Production environment"
             displayName: 'Deploy to Production'
 ```
-The above stage is the Production stage that Runs after the Test stage is successful. It targets the test enviroment after a manual approval has been made in Azure DevOps if all other stages pass.
+The above stage is the Production stage that Runs after the Test stage is successful. It targets the test environment after a manual approval has been made in Azure DevOps if all other stages pass.
 
 
-## BranchPolicies and Protection
-- The main brach requires a pull request before merging.
+## Branch Policies and Protection
+- The main branch requires a pull request before merging.
 - Requires approvals and status check of the production stage to pass before merging.
 - The Development Branch requires status check of the test stage to pass before merging.
 
 ## Testing Strategy
 - Unit tests with pytest + coverage.
-- Static Analysys with pylint code quality checks.
+- Static Analysis with pylint code quality checks.
 - Security testing with Sonar Cloud analysis.
 - Performance testing with Locust load testing.
-- UAT testing with Selenium for autmated browser testing.
+- UAT testing with Selenium for automated browser testing.
 
 ## Environment Setup and Configuration
-- Test Enviroment with automatic deployment after build is successfull and manual approval check.
-- Production Enviroment with automatic deployment after build is successsful and manual approval check is completed.
+- Test Environment with automatic deployment after build is successful and manual approval check.
+- Production Environment with automatic deployment after build is successful and manual approval check is completed.
 ## Deployment Process
-- Commits automatically trigger the pipleline.
+- Commits automatically trigger the pipeline.
 - Build stage executes.
-- If the build stage is successfull manual approval is required for the Test Enviroment stage to deploy.
-- If the Test Enviroment is succsesfull the Production stage requires.
+- If the build stage is successful manual approval is required for the Test Environment stage to deploy.
+- If the Test Environment is successful the Production stage requires.
+
 
 
 
