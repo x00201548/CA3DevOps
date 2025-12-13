@@ -81,28 +81,6 @@ import time
 import unittest
 
 
-# options = webdriver.ChromeOptions()
-# options.add_argument("--headless")
-# driver = webdriver.Chrome()
-# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-# driver.get("https://www.calculator.net/")
-
-# def calculate(n1, operator, n2):
-#     for digit in str(n1):
-#         driver.find_element(By.XPATH, '//*[@id="sciout"]/tbody/tr[2]/td[2]/div/div[1]/span[1]' ).click()
-#     for digit in str(n2):
-#         driver.find_element(By.XPATH, '//*[@id="sciout"]/tbody/tr[2]/td[2]/div/div[1]/span[3]').click()
-#     for digit in str(operator):
-#         driver.find_element(By.XPATH, '//*[@id="sciout"]/tbody/tr[2]/td[2]/div/div[1]/span[4]').click()
-    
-#     driver.find_element(By.XPATH, '//*[@id="sciout"]/tbody/tr[2]/td[2]/div/div[5]/span[4]').click()
-#     result = driver.find_element(By.ID, "sciOutPut").text
-#     if result == "16":
-#         print("Test 2 complete successfully")
-#     else:
-#         print("Test 2 failed")
-
-
 class SeleniumTest(unittest.TestCase):
     def setUp(self):
         
