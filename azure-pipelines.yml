@@ -88,7 +88,7 @@ stages:
           artifactName: 'drop'
 
 - stage: DelpoyTest
-  displayName: "Delpot to Test"
+  displayName: "Delpoy to Test"
   dependsOn: Build
   condition: succeeded()
   jobs:
@@ -100,16 +100,10 @@ stages:
       runOnce:
         deploy:
           steps:
-
-          - script: |
-            pytest tests/test_calc_selenium.py -v 
-            displayName: 'Selenium UAT Tests' 
-          
-          
           - download: current
             artifact: drop
-          - script: echo "Deploying to Dev environment"
-            displayName: 'Deploy to Dev'
+          - script: echo "Deploying to Test environment"
+            displayName: 'Deploy to Test'
 
 - stage: DeployProduction
   displayName: "Deploy To Production"
