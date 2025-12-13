@@ -17,3 +17,12 @@ def subtract(a, b):
 def divide(a, b):
     """Return the result of a divided by b."""
     return a / b
+
+def square(a):
+    """Return the square of a."""
+    return a * a
+
+def cube(a):
+    """Return the cube of a."""
+    return a * a * a
+
